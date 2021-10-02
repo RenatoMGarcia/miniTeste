@@ -31,11 +31,10 @@ public class RemoveCaracterDuplicado {
 			String palavraCorrigida = "";
 			
 			//Laço inicializado com o tamanho do vetor percorrendo as palavras decrescivamente
-			// A cada repetiçao vai decrementando a palavra ate dar false e quebrar o laço
+			// A cada repetiçao vai decrementando a palavra no momento que nao encontrar repetiçao quebra o laço
 			//Por ex: roupaoupa =>  "roupaoup" "a";
 			//     					"roupaou"  "pa"
 			//						"roupao"   "upa"
-			
 			for (int l = palavras.length(); l > 0; l--) {
 				
 				prePedacoAvaliado = palavras.substring(0, l);
@@ -44,7 +43,7 @@ public class RemoveCaracterDuplicado {
 				
 				pedacoAvaliado = palavras.substring(0, l - 1);
 				
-				//Variavel inicializada com a palavra corrigida
+				
 				palavraCorrigida = prePedacoAvaliado;
 
 				if (!pedacoAvaliado.contains(letrasBuscadas)) {
@@ -53,10 +52,10 @@ public class RemoveCaracterDuplicado {
 
 			}
 			
-			// Adicionando as palavras corrigidas para o Array
+			// Adicionando as palavras corrigidas no ArrayList
 			fraseCorrigida.add(i, palavraCorrigida);
 			
-			//Condiçao a palavra com a palavra corrigida
+			//Condiçao que compara a palavra original com a palavra corrigida
 			if (palavras.equals(palavraCorrigida)) {
 				//Se a palavra nao estiver duplicada retorna a entrada adicinando o "." no final da frase
 				duplicado = false;
@@ -69,18 +68,19 @@ public class RemoveCaracterDuplicado {
 		//Instanciando a classe para concatenar as palavras corrigidas
 		StringBuffer sb = new StringBuffer();
 		for (String palavra : fraseCorrigida) {
-			//condiçao que identifica a ultima letra para adicionar o "." no final da frase
+			//condiçao que identifica a ultima palavra para adicionar o "." no final da frase
 			if (palavra.equals(fraseCorrigida.get(fraseCorrigida.size() - 1))) {
 				sb.append(palavra + ".");
 
 			} else {
-				//Separa as String
+				
 				sb.append(palavra + " ");
 
 			}
 
 		}
-
+		
+		//Converte para String
 		String saida = sb.toString();
 
 		System.out.println(saida);
